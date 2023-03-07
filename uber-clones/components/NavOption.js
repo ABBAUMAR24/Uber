@@ -1,6 +1,8 @@
 import { FlatList, StyleSheet, Text, View,TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import tw from 'twrnc'
+import { Icon } from 'react-native-elements/dist/icons/Icon'
+import { useNavigation } from '@react-navigation/native'
 
 const data = [
   {
@@ -13,11 +15,12 @@ const data = [
     id: '456',
     title: 'get a food',
     image : 'http://links.papareact.com/28w',
-    screen : 'EaterScreen'
+    screen : 'EatScreen'
   },
 ]
 
 const NavOption = () => {
+  const navigation = useNavigation();
   return (
    <FlatList 
    style={tw``}
@@ -25,7 +28,9 @@ const NavOption = () => {
     horizontal
     keyExtractor = {(item) => item.id}
     renderItem = {({ item }) => (
-       <TouchableOpacity style={tw`p-2 pl-6 pt-4 bg-gray-100 m-2 w-40 h-44 `}>
+       <TouchableOpacity 
+       onPress={() => navigation.navigate(item.screen)}
+       style={tw`p-2 pl-6 pt-4 bg-gray-100 m-2 w-40  h-55 `}>
         
         <View>
           <Image 
@@ -34,8 +39,14 @@ const NavOption = () => {
               uri:  item.image
             }}
           />
-        </View>
-        <Text style={tw`mt-2  text-center text-lg font-semibold`}>{item.title}</Text>
+        
+        <Text style={tw`mt-2   text-lg font-semibold `}>{item.title}</Text>
+          <Icon
+           style={tw`p-2 bg-black w-10 rounded-full  `}
+           name='arrowright' 
+           color = 'white'
+            type='antdesign' />
+            </View>
        </TouchableOpacity>
     ) }
    />
