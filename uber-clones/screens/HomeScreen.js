@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Image} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import React from 'react'
 import tw from 'twrnc';
+import NavOption from '../components/NavOption';
 
 const HomeScreen = () => {
   return (
@@ -18,7 +19,7 @@ const HomeScreen = () => {
       }}
       />
       </View>
-      
+      <NavOption/>
     </SafeAreaView>
   )
 }
